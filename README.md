@@ -9,7 +9,10 @@ A collection of Claude agents for personal productivity and task management.
 | [Calendar Management](/.claude/agents/calendar-management.md) | Organize, optimize, and manage calendar events and scheduling |
 | [Email Triage](/.claude/agents/email-triage.md) | Process, prioritize, and draft responses to emails |
 | [GitHub Repo Management](/.claude/agents/github-repo-management.md) | Maintain and organize GitHub repositories and workflows |
-| [Meeting Prep](/.claude/agents/meeting-prep.md) | Prepare for meetings with agendas, talking points, and context |
+| [Meeting Prep](/.claude/agents/meeting-prep.md) | Prepare for meetings with agendas, talking points, and context (Granola) |
+| [Meeting Review](/.claude/agents/meeting-review.md) | Process completed meetings, extract action items, sync to Obsidian/Things 3 (Granola) |
+| [Project Pulse](/.claude/agents/project-pulse.md) | Monitor Riley Receptionist MVP progress |
+| [Weekly Update](/.claude/agents/weekly-update.md) | Generate weekly progress reports from Linear, Slack, Calendar, GitHub |
 
 ## Usage
 
