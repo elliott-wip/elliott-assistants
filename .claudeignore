@@ -1,0 +1,20 @@
+# Credentials and secrets
+*.local.json
+.env
+.env.*
+credentials.json
+*.pem
+*.key
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
