@@ -1,105 +1,167 @@
 # Elliott Assistants
 
-A portable collection of Claude agents for personal productivity and task management.
+A portable collection of Claude agents for personal productivity and daily workflow automation.
+
+## The Stack
+
+This repo turns Claude into a personal operating system by connecting:
+
+| Category | Tools |
+|----------|-------|
+| **Calendar** | Google Calendar |
+| **Email** | Gmail, Apple Mail |
+| **Meetings** | Granola (transcripts + notes) |
+| **Tasks** | Things 3, Linear |
+| **Notes** | Obsidian |
+| **Comms** | Slack |
+| **Search** | Brave Search |
+| **Memory** | Persistent context across sessions |
+| **macOS** | Messages, Contacts, Reminders, Maps |
 
 ## Agents
 
-| Agent | Description | MCP Tools |
-|-------|-------------|-----------|
-| [Calendar Management](.claude/agents/calendar-management.md) | Organize, optimize, and manage calendar events | Google Calendar |
-| [Email Triage](.claude/agents/email-triage.md) | Process, prioritize, and draft responses to emails | - |
-| [GitHub Repo Management](.claude/agents/github-repo-management.md) | Maintain and organize GitHub repositories | GitHub CLI |
-| [Meeting Prep](.claude/agents/meeting-prep.md) | Prepare for meetings with historical context | Granola, Google Calendar |
-| [Meeting Review](.claude/agents/meeting-review.md) | Process meetings, extract action items, sync to Obsidian/Things 3 | Granola |
-| [Project Pulse](.claude/agents/project-pulse.md) | Monitor Riley Receptionist MVP progress | Linear, Slack, Google Calendar |
-| [Weekly Update](.claude/agents/weekly-update.md) | Generate weekly progress reports | Linear, Slack, Google Calendar, GitHub |
+### Daily Workflow
+| Agent | What It Does | Trigger |
+|-------|--------------|---------|
+| [Morning Briefing](.claude/agents/morning-briefing.md) | Synthesizes calendar, tasks, email, Slack into one briefing | "Brief me" |
+| [End of Day](.claude/agents/end-of-day.md) | Captures accomplishments, open loops, preps tomorrow | "Wrap up" |
+| [Email Triage](.claude/agents/email-triage.md) | Triages inbox, drafts responses, extracts action items | "Triage inbox" |
 
-## Setup
+### Meetings
+| Agent | What It Does | Trigger |
+|-------|--------------|---------|
+| [Meeting Prep](.claude/agents/meeting-prep.md) | Pulls historical context from past meetings | "Prep for my meeting with..." |
+| [Meeting Review](.claude/agents/meeting-review.md) | Extracts action items, syncs to Obsidian/Things 3 | "Review my last meeting" |
+
+### Work
+| Agent | What It Does | Trigger |
+|-------|--------------|---------|
+| [Weekly Update](.claude/agents/weekly-update.md) | Generates progress reports from Linear, Slack, Calendar | "Draft weekly update" |
+| [Project Pulse](.claude/agents/project-pulse.md) | Quick status check on Riley MVP | "Riley status" |
+| [Calendar Management](.claude/agents/calendar-management.md) | Optimizes and manages calendar | "Organize my calendar" |
+| [GitHub Repo Management](.claude/agents/github-repo-management.md) | Maintains repositories | "Clean up repos" |
+
+## Quick Start
 
 ### Prerequisites
 
 - [Claude Code](https://claude.ai/claude-code) installed
-- Node.js 18+ (for MCP servers)
-- Python 3.10+ with [uv](https://github.com/astral-sh/uv) (for Granola MCP)
+- Node.js 18+
+- Python 3.10+ with [uv](https://github.com/astral-sh/uv)
+- [Bun](https://bun.sh) (for Apple MCP)
+- macOS (for Apple integrations, Obsidian, Things 3)
 
-### 1. Clone and Navigate
+### 1. Clone
 
 ```bash
 git clone https://github.com/elliott-wip/elliott-assistants.git
 cd elliott-assistants
 ```
 
-### 2. Configure Environment Variables
+### 2. Environment Variables
 
-Add to your shell profile (`~/.zshrc` or `~/.bashrc`):
+Add to `~/.zshrc` or `~/.bashrc`:
 
 ```bash
-# Google Calendar - path to OAuth credentials
+# Google (Calendar + Gmail)
 export GOOGLE_OAUTH_CREDENTIALS_PATH="$HOME/.config/google-calendar-mcp/credentials.json"
 
 # Slack
 export SLACK_BOT_TOKEN="xoxb-your-bot-token"
 export SLACK_TEAM_ID="your-team-id"
+
+# Brave Search (get from https://brave.com/search/api/)
+export BRAVE_API_KEY="your-api-key"
 ```
 
-### 3. Set Up MCP Servers
+### 3. MCP Server Setup
 
-| Server | Setup |
-|--------|-------|
-| **Google Calendar** | Run `npx @cocal/google-calendar-mcp` once to complete OAuth flow |
-| **Linear** | First use prompts browser OAuth - just approve |
-| **Slack** | Create a [Slack App](https://api.slack.com/apps) with bot token scopes |
-| **Granola** | Install [Granola.app](https://granola.ai) and sign in |
+| Server | First-Time Setup |
+|--------|------------------|
+| **Google** | `npx @cocal/google-calendar-mcp` → complete OAuth in browser |
+| **Linear** | First use prompts OAuth → approve in browser |
+| **Slack** | Create [Slack App](https://api.slack.com/apps) with bot scopes |
+| **Granola** | Install [Granola.app](https://granola.ai), sign in |
+| **Apple** | macOS only, no setup needed |
+| **Memory** | No setup needed |
+| **Brave** | Get API key, set env var |
 
-### 4. macOS Permissions (Optional)
+### 4. macOS Permissions
 
 For Obsidian/Things 3 integration:
-- Grant **Full Disk Access** to Claude Code in System Settings → Privacy & Security
+- System Settings → Privacy & Security → **Full Disk Access** → Add Claude Code
 
-## Usage
-
-These agents work with Claude Code. Example invocations:
+## Usage Examples
 
 ```bash
-# Meeting prep
-claude "Help me prepare for my 1:1 with Sarah tomorrow"
+# Start your day
+claude "Brief me"
 
-# Meeting review
+# End your day
+claude "Wrap up my day"
+
+# Before a meeting
+claude "Prep for my 1:1 with Sarah"
+
+# After a meeting
 claude "Review my last meeting and create tasks"
 
-# Weekly update
+# Check email
+claude "Triage my inbox"
+
+# Weekly reporting
 claude "Draft a weekly update for Project Riley"
 
-# Project pulse
-claude "What's the status on Riley MVP?"
+# Quick research
+claude "Research competitors to [X]"
 ```
-
-Or use `claude --agent <agent-name>` if configured.
 
 ## Project Structure
 
 ```
 .claude/
-├── agents/           # Agent definitions
-│   ├── meeting-prep.md
-│   ├── meeting-review.md
-│   └── ...
-├── settings.local.json  # Local permissions (gitignored)
-.mcp.json              # MCP server configuration
-.claudeignore          # Files to ignore
-CLAUDE.md              # Project context for Claude
+├── agents/
+│   ├── morning-briefing.md    # Daily briefing
+│   ├── end-of-day.md          # EOD wrap-up
+│   ├── email-triage.md        # Inbox management
+│   ├── meeting-prep.md        # Meeting preparation
+│   ├── meeting-review.md      # Post-meeting processing
+│   ├── weekly-update.md       # Progress reports
+│   ├── project-pulse.md       # Project status
+│   ├── calendar-management.md # Calendar optimization
+│   └── github-repo-management.md
+├── settings.local.json        # Permissions (gitignored)
+.mcp.json                      # MCP server config
+.claudeignore                  # Files Claude ignores
+.gitignore                     # Git ignore
+CLAUDE.md                      # Project context
+README.md                      # This file
 ```
 
 ## Adding New Agents
 
-1. Create a new file in `.claude/agents/`
-2. Follow the structure:
-   - Title and description
+1. Create `.claude/agents/your-agent.md`
+2. Include:
    - Tools Available (MCP tools table)
    - Capabilities
-   - Instructions
+   - Instructions (step-by-step workflow)
    - Example Tasks
-   - Templates (if applicable)
+   - Output Format
+
+## Philosophy
+
+> "Stop being the messenger between apps. Design workflows where Claude executes across your entire digital workspace."
+
+This setup eliminates context-switching by giving Claude direct access to all your tools. One conversation can:
+- Read your calendar
+- Check yesterday's meeting notes
+- Query your task backlog
+- Scan urgent emails
+- Draft responses
+- Create tasks
+- Update your daily note
+
+All without you copying/pasting between apps.
 
 ## License
 

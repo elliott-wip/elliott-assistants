@@ -8,6 +8,13 @@
         "GOOGLE_OAUTH_CREDENTIALS": "${GOOGLE_OAUTH_CREDENTIALS_PATH}"
       }
     },
+    "gmail": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-google-workspace"],
+      "env": {
+        "GOOGLE_OAUTH_CREDENTIALS": "${GOOGLE_OAUTH_CREDENTIALS_PATH}"
+      }
+    },
     "linear": {
       "command": "npx",
       "args": ["-y", "mcp-remote", "https://mcp.linear.app/mcp"]
@@ -27,6 +34,21 @@
         "git+https://github.com/proofgeist/granola-ai-mcp-server",
         "granola-mcp-server"
       ]
+    },
+    "apple": {
+      "command": "bunx",
+      "args": ["--no-cache", "apple-mcp@latest"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      }
     }
   }
 }
