@@ -13,7 +13,6 @@ This project uses the following MCP servers (configured in `.mcp.json`):
 | `linear` | Issue tracking, project management | Browser OAuth |
 | `slack` | Channel messages, team communication | Bot token |
 | `granola` | Meeting transcripts, notes | Local Granola app |
-| `apple` | Messages, Contacts, Mail, Reminders, Calendar, Maps | macOS native |
 | `memory` | Persistent context across sessions | Local storage |
 | `tavily` | Web search and research (AI-optimized) | API key |
 
@@ -40,7 +39,7 @@ export TAVILY_API_KEY="your-tavily-api-key"
 |-------|----------|----------------|
 | `morning-briefing` | "Brief me", "Good morning" | Calendar, Granola, Linear, Slack, Gmail, Memory |
 | `end-of-day` | "Wrap up", "End my day" | Granola, Linear, Calendar, GitHub, Obsidian, Memory |
-| `email-triage` | "Triage inbox", "Check email" | Gmail, Apple Mail |
+| `email-triage` | "Triage inbox", "Check email" | Gmail |
 
 ### Meeting Agents
 | Agent | Triggers | MCP Tools Used |
@@ -62,7 +61,6 @@ Some agents integrate with local macOS apps:
 
 - **Obsidian**: Daily notes at `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ETC/`
 - **Things 3**: Task management via AppleScript
-- **Apple Apps**: Messages, Contacts, Mail, Reminders via Apple MCP
 
 ## Setup on New Machine
 
@@ -70,13 +68,11 @@ Some agents integrate with local macOS apps:
 2. Install dependencies:
    - Node.js 18+ (`npm install -g npx`)
    - Python 3.10+ with [uv](https://github.com/astral-sh/uv)
-   - Bun (`curl -fsSL https://bun.sh/install | bash`)
 3. Set up MCP servers:
    - **Google Calendar/Gmail**: Run `npx @cocal/google-calendar-mcp` and complete OAuth
    - **Linear**: First use will prompt browser OAuth
    - **Slack**: Create a Slack app and get bot token
    - **Granola**: Install Granola.app and sign in
-   - **Apple**: Requires macOS, no additional setup
    - **Memory**: No setup required
    - **Tavily**: Get API key from [Tavily](https://tavily.com)
 4. Set environment variables (add to `.zshrc` or `.bashrc`)

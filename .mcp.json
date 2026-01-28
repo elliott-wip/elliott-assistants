@@ -35,10 +35,6 @@
         "granola-mcp-server"
       ]
     },
-    "apple": {
-      "command": "bunx",
-      "args": ["--no-cache", "apple-mcp@latest"]
-    },
     "memory": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"]

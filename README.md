@@ -16,7 +16,6 @@ This repo turns Claude into a personal operating system by connecting:
 | **Comms** | Slack |
 | **Search** | Tavily (AI-optimized) |
 | **Memory** | Persistent context across sessions |
-| **macOS** | Messages, Contacts, Reminders, Maps |
 
 ## Agents
 
@@ -48,7 +47,6 @@ This repo turns Claude into a personal operating system by connecting:
 - [Claude Code](https://claude.ai/claude-code) installed
 - Node.js 18+
 - Python 3.10+ with [uv](https://github.com/astral-sh/uv)
-- [Bun](https://bun.sh) (for Apple MCP)
 - macOS (for Apple integrations, Obsidian, Things 3)
 
 ### 1. Clone
@@ -82,7 +80,6 @@ export TAVILY_API_KEY="your-api-key"
 | **Linear** | First use prompts OAuth → approve in browser |
 | **Slack** | Create [Slack App](https://api.slack.com/apps) with bot scopes |
 | **Granola** | Install [Granola.app](https://granola.ai), sign in |
-| **Apple** | macOS only, no setup needed |
 | **Memory** | No setup needed |
 | **Tavily** | Get API key, set env var |
 
