@@ -15,7 +15,7 @@ This project uses the following MCP servers (configured in `.mcp.json`):
 | `granola` | Meeting transcripts, notes | Local Granola app |
 | `apple` | Messages, Contacts, Mail, Reminders, Calendar, Maps | macOS native |
 | `memory` | Persistent context across sessions | Local storage |
-| `brave-search` | Web search and research | API key |
+| `tavily` | Web search and research (AI-optimized) | API key |
 
 ## Environment Variables
 
@@ -29,8 +29,8 @@ export GOOGLE_OAUTH_CREDENTIALS_PATH="$HOME/.config/google-calendar-mcp/credenti
 export SLACK_BOT_TOKEN="xoxb-your-bot-token"
 export SLACK_TEAM_ID="your-team-id"
 
-# Brave Search
-export BRAVE_API_KEY="your-brave-api-key"
+# Tavily (AI search)
+export TAVILY_API_KEY="your-tavily-api-key"
 ```
 
 ## Agents
@@ -78,6 +78,6 @@ Some agents integrate with local macOS apps:
    - **Granola**: Install Granola.app and sign in
    - **Apple**: Requires macOS, no additional setup
    - **Memory**: No setup required
-   - **Brave Search**: Get API key from [Brave Search API](https://brave.com/search/api/)
+   - **Tavily**: Get API key from [Tavily](https://tavily.com)
 4. Set environment variables (add to `.zshrc` or `.bashrc`)
 5. Grant Full Disk Access to Claude Code for Obsidian integration

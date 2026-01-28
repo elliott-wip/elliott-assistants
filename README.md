@@ -14,7 +14,7 @@ This repo turns Claude into a personal operating system by connecting:
 | **Tasks** | Things 3, Linear |
 | **Notes** | Obsidian |
 | **Comms** | Slack |
-| **Search** | Brave Search |
+| **Search** | Tavily (AI-optimized) |
 | **Memory** | Persistent context across sessions |
 | **macOS** | Messages, Contacts, Reminders, Maps |
 
@@ -70,8 +70,8 @@ export GOOGLE_OAUTH_CREDENTIALS_PATH="$HOME/.config/google-calendar-mcp/credenti
 export SLACK_BOT_TOKEN="xoxb-your-bot-token"
 export SLACK_TEAM_ID="your-team-id"
 
-# Brave Search (get from https://brave.com/search/api/)
-export BRAVE_API_KEY="your-api-key"
+# Tavily (get from https://tavily.com)
+export TAVILY_API_KEY="your-api-key"
 ```
 
 ### 3. MCP Server Setup
@@ -84,7 +84,7 @@ export BRAVE_API_KEY="your-api-key"
 | **Granola** | Install [Granola.app](https://granola.ai), sign in |
 | **Apple** | macOS only, no setup needed |
 | **Memory** | No setup needed |
-| **Brave** | Get API key, set env var |
+| **Tavily** | Get API key, set env var |
 
 ### 4. macOS Permissions
 
