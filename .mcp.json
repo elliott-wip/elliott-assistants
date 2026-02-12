@@ -10,10 +10,7 @@
     },
     "gmail": {
       "command": "npx",
-      "args": ["-y", "@anthropic/mcp-server-google-workspace"],
-      "env": {
-        "GOOGLE_OAUTH_CREDENTIALS": "${GOOGLE_OAUTH_CREDENTIALS_PATH}"
-      }
+      "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"]
     },
     "linear": {
       "command": "npx",
