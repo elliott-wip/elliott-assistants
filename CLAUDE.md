@@ -55,6 +55,11 @@ export TAVILY_API_KEY="your-tavily-api-key"
 | `calendar-management` | Manage calendar events | Google Calendar |
 | `github-repo-management` | Repo maintenance | GitHub CLI |
 
+### Career Development
+| Agent | Triggers | MCP Tools Used |
+|-------|----------|----------------|
+| `career-dev` | `/career brag/resume/case/market/learn/network/strategy/prep` | WebSearch, WebFetch, Obsidian |
+
 ## Local Integrations
 
 Some agents integrate with local macOS apps:
